@@ -1,65 +1,35 @@
 import React from "react";
 import './styles.css';
-import Welcome from './header.js';
+import Welcome from './issueslist.js';
+import Header from './issues.js'
+import Test from './test.js';
+import Headertwo from './pull.js'
 import ReactDOM from 'react-dom';
+import  {Switch , Router , Route } from 'react-router'
+import { HashRouter , Link , IndexRoute } from 'react-router-dom';
 
 import $ from 'jquery';
 
-export default class Header extends React.Component{
-constructor(props){
-  super(props);
-  this.state={
-    repodatas : " " ,
-    userdatas :  " ",
 
-  };
-}
-  render(){
-    let handleSubmit= ((e)=>{
-   
-      e.preventDefault();
-      var user=($('#username').val());
-          this.setState({userdatas : user});
-      var repo = ($('#reponame').val());
-      this.setState({repodatas : repo});
-          console.log(user+" "+repo);
-    
-    });
+class MainClass extends React.Component{
+		render(){
+			return(
+				<HashRouter>
+				<Switch>
 
-      return(
-      <div className ="wrapperclass">
-        <h1> Fetch users assgined issues </h1>
-        <h3> In React </h3>
-
-
-        <div id="searchform">
-            <form id="myForm" name="myForm" onSubmit = {handleSubmit}>
-             <div>
-                    <label >Enter github username:</label>
-                    <input type="text" id="username" name="username"/>
-                    <br/>
-                    <br/>
-                    <br/>
-                     <label >Enter a repository of this user:</label>
-                    <input type="text" id="reponame" name="reponame"/>
-             </div>
-             <br/>
-             <br/>
-             <br/>
-  
-        <input class="button" type="submit" value="Submit!"/>
-        </form>
-          <Welcome repodata = {this.state.repodatas}  userdata= {this.state.userdatas} />
-        </div>
-        </div>
-        );
-
-
-  }
+					<Route exact path='/' component = {Header}/>
+					<Route exact path='/test' component = {Test}/>
+					<Route exact path='/pulls' component = {Headertwo}/> 
+				</Switch>
+				</HashRouter>
+				);
+		}
+ 
 
 }
+
+
 
 ReactDOM.render(
-   <Header/>,
-   document.getElementById('root')
+   <MainClass/>,document.getElementById('root')
 );
