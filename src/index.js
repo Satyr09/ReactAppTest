@@ -5,6 +5,7 @@ import Header from './issues.js'
 import Test from './test.js';
 import Headertwo from './pull.js'
 import ReactDOM from 'react-dom';
+import Community from	'./community.js'
 import  {Switch , Router , Route } from 'react-router'
 import { HashRouter , Link , IndexRoute } from 'react-router-dom';
 
@@ -18,8 +19,8 @@ class MainClass extends React.Component{
 				<Switch>
 
 					<Route exact path='/' component = {Header}/>
-					<Route exact path='/test' component = {Test}/>
 					<Route exact path='/pulls' component = {Headertwo}/> 
+					<Route exact path= '/community' component={Community}/>
 				</Switch>
 				</HashRouter>
 				);
